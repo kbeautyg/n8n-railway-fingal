@@ -10,7 +10,7 @@ RUN apk add --update graphicsmagick tzdata python3 make g++ \
 WORKDIR /data
 
 # Expondo a porta (Railway define PORT automaticamente)
-EXPOSE $PORT
+EXPOSE 5678
 
 # UID fixo (evita problemas com permissões)
 ENV N8N_USER_ID=1000
