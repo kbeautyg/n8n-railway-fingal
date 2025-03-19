@@ -15,5 +15,8 @@ EXPOSE $PORT
 # UID fixo (evita problemas com permissões)
 ENV N8N_USER_ID=1000
 
+# PORTA N8N
+ENV N8N_PORT=5678
+
 # Inicia o n8n
 CMD ["n8n", "start"]
