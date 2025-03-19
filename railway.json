@@ -1,0 +1,9 @@
+{
+    "build": {
+      "env": {
+        "N8N_VERSION": "latest"
+      }
+    },
+    "start": "n8n start"
+  }
+  
