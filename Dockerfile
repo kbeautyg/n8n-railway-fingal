@@ -1,4 +1,4 @@
-FROM node:18-bullseye
+FROM node:18-bookworm
 
 ARG N8N_VERSION=1.93.0
 
