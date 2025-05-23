@@ -1,17 +1,22 @@
-FROM node:20-alpine
+FROM node:18-bullseye
 
-ARG N8N_VERSION=latest
+ARG N8N_VERSION=1.93.0
 
-# Instala dependências e o n8n
-RUN apk add --no-cache graphicsmagick tzdata python3 make g++ \
-    && npm_config_user=root npm install --location=global n8n@${N8N_VERSION}
+# Устанавливаем системные зависимости
+RUN apt-get update && \
+    apt-get install -y graphicsmagick tzdata python3 build-essential && \
+    rm -rf /var/lib/apt/lists/*
 
+# Устанавливаем n8n глобально
+RUN npm_config_user=root npm install -g n8n@${N8N_VERSION}
+
+# Рабочая директория
 WORKDIR /data
-
-EXPOSE 5678
 
 ENV N8N_USER_ID=1000
 ENV N8N_PORT=5678
-ENV GENERIC_TIMEZONE=America/Sao_Paulo
+ENV GENERIC_TIMEZONE=Europe/Moscow  # или твой регион
+
+EXPOSE 5678
 
 CMD ["n8n", "start"]
